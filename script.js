@@ -1,28 +1,42 @@
-document.addEventListener('DOMContentLoaded', function () {
-    var audio = document.getElementById('audio');
-    var playlist = document.getElementById('playlist');
-    var tracks = playlist.getElementsByTagName('a');
+function init() {
+  var audio = document.getElementById('audio');
+  var playlist = document.getElementById('playlist');
+  var tracks = playlist.getElementsByTagName('a');
+  audio.volume = 0.10;
 
-    function playSong(songSrc) {
-        audio.src = songSrc;
-        audio.load();
-        audio.play();
-    }
+  // Asignar eventos a cada canción en la lista
+  for (var i = 0; i < tracks.length; i++) {
+      var link = tracks[i];
+      link.addEventListener('click', function(e) {
+          e.preventDefault();
+          var song = this.getAttribute('href');
+          run(song, audio, this);
+      });
+  }
 
-    for (var i = 0; i < tracks.length; i++) {
-        tracks[i].addEventListener('click', function (e) {
-            e.preventDefault();
-            var songSrc = this.getAttribute('href');
-            playSong(songSrc);
+  // Manejar el final de cada canción
+  audio.addEventListener('ended', function() {
+      var nextIndex = (Array.from(tracks).indexOf(document.querySelector('.active a')) + 1) % tracks.length;
+      var nextTrack = tracks[nextIndex];
+      run(nextTrack.getAttribute('href'), audio, nextTrack);
+  });
+}
 
-            // Remover la clase 'active' de todos los elementos de la lista
-            var items = playlist.getElementsByTagName('li');
-            for (var item of items) {
-                item.classList.remove("active");
-            }
+function run(song, audio, link) {
+  // Remover la clase 'active' de todos los elementos
+  var items = document.querySelectorAll('#playlist li');
+  items.forEach(function(item) {
+      item.classList.remove("active");
+  });
 
-            // Agregar la clase 'active' al elemento de la lista clicado
-            this.parentElement.classList.add("active");
-        });
-    }
-});
+  // Agregar la clase 'active' al elemento actual
+  link.parentElement.classList.add("active");
+
+  // Reproducir la canción seleccionada
+  audio.src = song;
+  audio.load();
+  audio.play();
+}
+
+// Inicializar al cargar la página
+document.addEventListener('DOMContentLoaded', init);
