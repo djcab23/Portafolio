@@ -45,7 +45,7 @@ h1,h2,h3,h4,p{
 .info-name h1 {
   font-family: 'Blackletter', Arial, Helvetica, sans-serif;
   font-style: italic;
-  color: #bf94ff; 
+  color: #bf94ff;
 }
 
 main{
@@ -67,7 +67,7 @@ main{
   padding-left: 100px;
   margin: auto;
   overflow: hidden;
-  background-color: black;
+  background-image: url(./B.gif);
   max-width: 1000px;
   container:margin auto ;
   border: solid 2px whitesmoke;
@@ -83,7 +83,7 @@ main{
   box-shadow: 0 0 10px rgba(191, 148, 255, 0.8);
   margin: auto;
   border-radius: 60px ;
-  background-color: black;
+  background-image: url(./B.gif);
 }
 
 #commentForm {
@@ -131,7 +131,7 @@ button:hover {
 }
 
 #playlist, audio{
-    background: black;
+    background:url(./B.gif);
     width:200px;
     padding:20px;
     list-style: none;
@@ -154,7 +154,9 @@ button:hover {
     text-shadow: 0 0 10px rgba(191, 148, 255, 0.8);
     padding:5px;
     display:block;
-
+    border: solid 2px whitesmoke;
+    box-shadow: 0 0 10px rgba(191, 148, 255, 0.8);
+    border-radius: 20px;
   }
   li a:hover{
     text-decoration:none;
