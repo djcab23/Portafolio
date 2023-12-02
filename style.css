@@ -42,6 +42,10 @@ h1,h2,h3,h4,p{
   align-items: center;
   justify-content: center;
   animation: flicker 1s infinite;
+  border: solid 2px whitesmoke;
+  border-radius: 4000px;
+  box-shadow: 0 0 10px rgba(191, 148, 255, 0.8);
+  background-image: url(./B.gif);
 }
 
 .info-name h1 {
