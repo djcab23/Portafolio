@@ -1,7 +1,7 @@
 $servername = "localhost";
 $username = "roberto";
 $password = "thecure";
-$db_name = "thecure";
+$db_name = "users";
 
 $conn = new mysqli($servername, $username, $password, $db_name);
 
@@ -28,37 +28,5 @@ if ($result->num_rows > 0) {
 
 stmt->close();
 $conn->close();
-
-?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ?>
